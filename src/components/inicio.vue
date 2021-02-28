@@ -23,7 +23,7 @@
         items: [
           {
             src: 'https://images.adsttc.com/media/images/566a/203f/e58e/ceff/8600/002b/large_jpg/04.jpg?1449795625',
-            titulo: "Ejemplo 1"
+            titulo: 'Ejemplo 1'
           },
           {
             src: 'https://blog.agendapro.com/hubfs/centro%20de%20belleza%20vac%C3%ADo.png',
