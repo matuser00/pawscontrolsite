@@ -18,7 +18,7 @@
                     <div v-for="carac in pet.Caracteristicas" :key="carac.Nombre">
                         {{carac.Nombre}}
                         <div v-for="precios in carac.Opciones" :key="precios.Nombre">
-                            <v-checkbox :label="precios.Nombre" v-model="precios.id" @click="action( pet.Nombre,carac.Nombre,precios.Nombre)">
+                            <v-checkbox :label="precios.Nombre" v-model="precios.id" @click="action2(precios)">
                             </v-checkbox>
                         </div>
                     </div>
@@ -45,6 +45,7 @@ export default {
 
     data(){
         return{
+            final2:0,
         Final:0, 
         petsLIst: 
         [
@@ -124,6 +125,9 @@ export default {
 
             }
             
+        },
+        action2(jsonOpcionServicio){
+            this.Final+=(jsonOpcionServicio.id?1:-1)*jsonOpcionServicio.Valor;
         }
 
     }
