@@ -1,60 +1,40 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+  <v-container>
+      <v-toolbar color="Disabled">
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
+      <v-toolbar-title>Veterinaria</v-toolbar-title>
+        <br>
+          <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn text  :to="{name:'Inicio'}">
+            Inicio
+          </v-btn>
+            <v-btn text  :to="{name:'Calculadora'}">
+            Calculadora
+          </v-btn>
+          </v-toolbar-items>  
+      </v-toolbar> 
+      <router-view></router-view>
+  </v-container>
+   
+  <v-footer padless>
+    <v-col class="text-center" cols="12">
+     <strong> Derechos Reservados </strong>
+    </v-col>
+  </v-footer>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
 
-    <v-main>
-      <HelloWorld/>
-    </v-main>
+ 
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  }
+}
 </script>
