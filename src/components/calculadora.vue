@@ -1,13 +1,29 @@
 <template>
     <v-container>
+        <v-container >
+            <v-flex>
+                    <v-card-title>
+                        Calculadora
+                    </v-card-title><br>
+            </v-flex>
+        </v-container>
         <v-card>
-            <v-card-title>
-                Calculadora
-            </v-card-title>
-            <div class="columns medium-4" v-for="pet in petsLIst" :key="pet.Nombre">
-                <v-checkbox class="Valor" :name="pet.Nombre" :label="pet.Nombre" :v-model="pet.Nombre" @click="action( pet.Nombre)">
-                </v-checkbox>
-            </div>
+            <v-row justify="center">
+
+                <div class="columns medium-4" v-for="pet in petsLIst" :key="pet.Nombre">
+                   <v-flex> 
+                     <p> {{pet.Nombre}}</p>
+                   </v-flex>
+
+                    <div v-for="carac in pet.Caracteristicas" :key="carac.Nombre">
+                        {{carac.Nombre}}
+                        <div v-for="precios in carac.Opciones" :key="precios.Nombre">
+                            <v-checkbox :label="precios.Nombre" v-model="precios.id" @click="action( pet.Nombre,carac.Nombre,precios.Nombre)">
+                            </v-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </v-row>
         </v-card>
         <v-row>
             <v-col cols="4">
@@ -18,17 +34,7 @@
                 label="Resultado"
                 class="Resultado"
                 v-model="Final">
-                </v-text-field>
-                <v-text-field
-                label="A"
-                class="A"
-                v-model.number="A1">
-                </v-text-field>
-                <v-text-field
-                label="B"
-                class="B"
-                v-model.number="B2" >
-                </v-text-field>                                
+                </v-text-field>                              
             </v-col>
         </v-row>
     </v-container>
@@ -39,13 +45,11 @@ export default {
 
     data(){
         return{
-        Final:"",
-        A1: "",
-        B2: "",    
+        Final:0, 
         petsLIst: 
         [
             {
-                Nombre: "Cortede de pelo",
+                Nombre: 'Corte de de pelo' ,
                 Caracteristicas: 
                 [
                     {
@@ -54,11 +58,13 @@ export default {
                         [
                             {
                                 Nombre :"Chico",
+                                id: false,
                                 Valor : 30
 
                             },
                             {
                                 Nombre : "Grande",
+                                id: false,
                                 Valor : 80
                             }
                         ]
@@ -66,36 +72,57 @@ export default {
                 ],
             },
             {
-                Nombre: "Baño",
+                Nombre:'Baño',
+                id: false,
                 Caracteristicas: 
                 [
                     {
-                        Nombre: "Tamaño",
+                        Nombre: "Tipo de baño",
                         Opciones: 
                         [
                             {
-                                Nombre :"Chico",
-                                Valor : 30
+                                Nombre :"Sencillo",
+                                id: false,
+                                Valor : 150
 
                             },
                             {
-                                Nombre : "Grande",
-                                Valor : 80
+                                Nombre : "Completo",
+                                id: false,
+                                Valor : 350
                             }
                         ]
                     }
                 ],
             }            
-        ]
+        ],
         }
     },
     methods: {
-        action (Nombre) {
-            console.log("Click en ",Nombre)
-            this.A1 = Nombre
-            console.log(this.A1)
-            console.log(this.B2)
-            this.Final= this.A1+this.B2
+
+        action (Servicio,Caracteristica,Opcion) {
+            var aux= this.petsLIst.find(
+                function(a) {
+                    return a.Nombre == Servicio;
+                }
+            )
+            var aux2= aux.Caracteristicas.find(
+                function(a) {
+                    return a.Nombre === Caracteristica;
+                }
+            )
+            var aux3= aux2.Opciones.find(
+                function(a) {
+                    return a.Nombre === Opcion;
+                }
+            )  
+            console.log(aux3.Valor)          
+            if(aux3.id===true){
+                this.Final = this.Final + aux3.Valor
+            }else{
+                this.Final = this.Final - aux3.Valor
+
+            }
             
         }
 

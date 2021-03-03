@@ -1,35 +1,33 @@
 <template>
   <v-app>
-    <v-container>
-    <v-toolbar dense class="mainHeader" >
-      <v-toolbar-title>
-          Veterinaria
-      </v-toolbar-title>
+  <v-container>
+      <v-toolbar color="Disabled">
+
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-toolbar-items class="hidden-xs-only">
-        <v-btn text><router-link to="/">Inicio</router-link></v-btn>
-        <v-btn text><router-link to="/calculadora">Calculadora</router-link></v-btn>
-      </v-toolbar-items>
-      <div class="hidden-sm-and-up">
-        <v-menu offset-y>
-          <template v-slot:activator="{ on }">
-            <v-app-bar-nav-icon v-on="on"></v-app-bar-nav-icon>
-          </template>
-          <v-list class="responsiveMenu">
-            <v-list-item>
-              <v-list-item-title><router-link to="/">Inicio</router-link></v-list-item-title>
-            </v-list-item>
-            <v-list-item>
-              <v-list-item-title><router-link to="/calculadora">Calculadora</router-link></v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </div>
-    </v-toolbar>
-    </v-container>
-    <v-container>
+      <v-toolbar-title>Veterinaria</v-toolbar-title>
+        <br>
+          <v-spacer></v-spacer>
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn text  :to="{name:'Inicio'}">
+            Inicio
+          </v-btn>
+            <v-btn text  :to="{name:'Calculadora'}">
+            Calculadora
+          </v-btn>
+          </v-toolbar-items>  
+      </v-toolbar> 
       <router-view></router-view>
-    </v-container>
+  </v-container>
+   
+  <v-footer padless>
+    <v-col class="text-center" cols="12">
+     <strong> Derechos Reservados </strong>
+    </v-col>
+  </v-footer>
+
+
+ 
   </v-app>
 </template>
 
