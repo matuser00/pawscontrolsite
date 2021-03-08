@@ -1,18 +1,46 @@
 <template>
-  <v-carousel hide-delimiters cycle height="400"     
-    show-arrows-on-hover>
 
-
-    <v-carousel-item v-for="(item,i) in items" :key="i" :src="item.src">
-
-        <v-row class="fill-height" align="center" justify="center"  >
-            <div class="display-3" >
-            {{ item.titulo }} 
-          </div>    
-        </v-row>
-
-    </v-carousel-item>
-  </v-carousel>
+    <v-container>
+      <div>
+        <H2>Otra Opción</H2>
+        <v-card>
+              <v-content >
+                  <v-img
+                    height="600"
+                    src="https://image.freepik.com/foto-gratis/perro-siendo-revisado-veterinario-tienda-mascotas_23-2148872561.jpg"
+                  >
+                  </v-img>       
+                  <v-row  align="start" justify="end" 
+        >
+                    <v-card class="transparent"
+                      max-width="400"
+                    >
+                    <v-card-title class="title">Titulo de las imagenes </v-card-title>
+                    </v-card>
+                  </v-row>
+              </v-content>
+        </v-card>
+      </div>
+      <v-content  v-for="(id,i) in items" :key="i" v-show="id.image"  >
+        <div class="carrusel" id="carrusel" >
+        {{id}}{{i}}
+        <v-row align="center" justify="end" style="height: 600px;" >
+          <v-col  md="8">
+             <v-card class="transparent"
+              max-width="400"
+            >
+            <v-card-title class="title">{{id.titulo}} </v-card-title>
+            </v-card>
+          </v-col>
+          <v-col>
+            <v-row justify="end">
+              <v-btn @click="display(i)" >next</v-btn>
+            </v-row>
+          </v-col>
+        </v-row>     
+        </div>  
+      </v-content>
+    </v-container>
 </template>
 
 
@@ -20,31 +48,79 @@
   export default {
     data () {
       return {
+        aux: true,
+        aux2: false,
+        aux3: false,
+        shows: [{image:false},{image:false},{image:true}],
         items: [
           {
-            src: 'https://images.adsttc.com/media/images/566a/203f/e58e/ceff/8600/002b/large_jpg/04.jpg?1449795625',
-            titulo: "Ejemplo 1"
+            image:true,
+            src: 'https://image.freepik.com/foto-gratis/perro-siendo-revisado-veterinario-tienda-mascotas_23-2148872561.jpg',
+            titulo: 'PetMascota',
+            descripcion: 'Descripcion del servicio'
           },
           {
-            src: 'https://blog.agendapro.com/hubfs/centro%20de%20belleza%20vac%C3%ADo.png',
-                        titulo: 'Ejemplo 2'
+            image:false,
+            src: 'https://image.freepik.com/vector-gratis/hospital-moderno-perros-gatos_74855-7620.jpg',
+            titulo: 'Servicios',
+            descripcion: 'Descripcion del servicio en general'
           },
           {
-            src: 'https://www.flowww.net/hubfs/Q3_AGOSTO%202018/BLOG_ES/como-escoger-los-muebles-de-tu-salon-de-unas.png',
-                        titulo: 'Ejemplo 3'
+            image:false,
+            src: 'https://image.freepik.com/foto-gratis/mujer-afroamericana-positiva-sostiene-perro-miniatura-obediente-manos-pasa-dia-libre-su-mascota-favorita-animal-comprado-tienda-mascotas-aislado-sobre-fondo-amarillo_273609-34264.jpg',
+            titulo: 'Corte de pelo',
+            descripcion: 'Los perros pueden contar con dos capas de pelo: el pelo profundo y el pelo protector. Ambos nacen de un mismo folículo. El profundo es el pelo más corto y cercano a la piel, suave y fino, que actúa como aislante. El pelo protector se rodea de varios pelos profundos y es el que forma la capa superior del manto del animal y ayuda a prevenir lesiones.'
           },
           {
-            src: 'https://www.dondeir.com/wp-content/uploads/2019/01/cortes-de-cabello-para-hombre-2019.jpg',
-                        titulo: 'Ejemplo 4'
+            image:false,
+            src: 'https://image.freepik.com/foto-gratis/joven-mujer-caucasica-perro-sobre-pared-aislada_1368-114726.jpg',
+            titulo: 'Baño',
+            descripcion: 'Descripcion del servicio de baño'
           }
         ],
+        alignments: [
+        'start',
+        'center',
+        'end',
+      ],
       }
     },
+    methods:{
+      display(opcion){
+        console.log(opcion)
+        this.items[opcion].image = false
+        this.items[(opcion + 1) % 4].image = true
+        console.log(this.items[(opcion + 1) % 4].src)
+        document.getElementById("carrusel").style.background = "url("+this.items[(opcion + 1) % 4].src+")";
+
+      }
+    }
   }
 </script>
 
 <style>
+.titulo{color: black};
 
-.display-3 {color: black} ;
+.transparent {
+   background-color: #000 !important;
+   opacity: 0.65;
+   border-color: transparent!important;
+ }
 
+ .title{
+   color:#009688ff
+ }
+
+ #carrusel{
+  margin:10px auto;
+  border-radius:5px;
+  border: 1px solid #999;
+  padding:13px;
+  width:100%;
+  height:650px;
+  background-size: 100% 100%;
+  background-repeat:no-repeat;
+  background:url('https://image.freepik.com/foto-gratis/perro-siendo-revisado-veterinario-tienda-mascotas_23-2148872561.jpg');
+  background-size: cover;
+ }
 </style>
