@@ -8,19 +8,19 @@
 
       <template>
         <v-container>
-            <v-card-title> Sección Plataforma </v-card-title><br>
+            <SeccionPlataforma />
         </v-container>
       </template>
 
       <template>
         <v-container>
-            <v-card-title> Seccion Experiencia </v-card-title><br>
+            <SeccionExperiencia />
         </v-container>
       </template>
 
       <template>
         <v-container>
-            <v-card-title> Sección Caracteristicas </v-card-title><br>
+            <SeccionCaracteristicas />
         </v-container>
       </template>
 
@@ -36,13 +36,19 @@
 <script>
  import Carrucel from  '../components/Carrucel.vue';
  import calculadora from '../components/calculadora.vue';
+ import SeccionPlataforma from '../components/SeccionPlataforma.vue';
+ import SeccionExperiencia from '../components/SeccionExperiencia.vue';
+import SeccionCaracteristicas from '../components/SeccionCaracteristicas.vue';
 
  export default {
   name: "App",
 
   components: {
     Carrucel,
-    calculadora
+    calculadora,
+    SeccionPlataforma,
+    SeccionExperiencia,
+    SeccionCaracteristicas
   },
  }
 

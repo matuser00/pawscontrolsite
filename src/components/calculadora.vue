@@ -2,9 +2,11 @@
     <v-container>
         <v-container >
             <v-flex>
+                <v-card>
                     <v-card-title>
                         Calculadora
                     </v-card-title><br>
+                </v-card>
             </v-flex>
         </v-container>
         <v-card>

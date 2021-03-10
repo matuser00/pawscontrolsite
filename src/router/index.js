@@ -14,6 +14,16 @@ const routes = [
     path: '/calculadora',
     name: 'Calculadora',
     component: () => import('../components/calculadora.vue')
+  },
+  {
+    path: '/plataforma',
+    name: 'Plataforma',
+    component: () => import('../components/SeccionPlataforma.vue')
+  },
+  {
+    path: '/experiencia',
+    name: 'Expriencia',
+    component: () => import('../components/SeccionExperiencia.vue')
   }
 ]
 
