@@ -25,18 +25,18 @@
       
       <v-content  v-for="(id,i) in items" :key="i" v-show="id.image"  >
         <div class="carrusel"  :style="id.style" >
-        <H2>Opción 2</H2>
+        <H2 class="primary--text">Opción 2</H2>
         <v-row align="center" justify="end" style="height: 600px;" >
           <v-col  md="8">
-             <v-card class="transparent"
+             <v-card class="info transparent2"
               max-width="400"
             >
-            <v-card-title class="title">{{id.titulo}} </v-card-title>
+            <v-card-title class="secondary--text">{{id.titulo}} </v-card-title>
             </v-card>
           </v-col>
           <v-col>
             <v-row justify="end">
-              <v-btn @click="display(i)" >next</v-btn>
+              <v-btn class="primary" @click="display(i)" >next</v-btn>
             </v-row>
           </v-col>
         </v-row>     
@@ -235,10 +235,8 @@
 <style>
 .titulo{color: black};
 
-.transparent {
-   background-color: #000 !important;
-   opacity: 0.65;
-   border-color: transparent!important;
+.transparent2 {
+  opacity: 0.7;
  }
 
  .title{
